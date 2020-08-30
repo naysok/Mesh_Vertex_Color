@@ -4,22 +4,21 @@ import rhinoscriptsyntax as rs
 
 class Operate_Mesh():
 
-    def define_mesh_points(self, num):
+    def define_mesh_points_triangle(self, num):
         
         pts = []
         
         for i in xrange(num):
             for j in xrange(num):
                 
-                yy = j * (math.sin(1/3 * math.pi))
-                
+                yy = j * (math.sin((1.0 / 3.0) * math.pi))
+
                 if j%2 == 0:
-                    xx = i
-                    pts.append(rs.AddPoint(xx, yy, 0))
+                     xx = i
                 else:
-                    xx = i + (math.cos(1/3 * math.pi))
-                    pts.append(rs.AddPoint(xx, yy, 0))
+                     xx = i + (math.cos((1.0 / 3.0) * math.pi))
                 
+                pts.append(rs.AddPoint(xx, yy ,0))
         
         return pts
 
