@@ -4,6 +4,18 @@ import rhinoscriptsyntax as rs
 
 class Operate_Mesh():
 
+
+    def define_mesh_points(self, num):
+        
+       pts = []
+       
+       for i in xrange(num):
+           for j in xrange(num):
+               pts.append(rs.AddPoint(i, j ,0))
+       
+       return pts
+
+
     def define_mesh_points_triangle(self, num):
         
         pts = []
