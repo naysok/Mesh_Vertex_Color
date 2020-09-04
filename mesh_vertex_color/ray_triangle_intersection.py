@@ -16,8 +16,9 @@ class RayTriangleIntersection():
 
     def calc_intersection(self, o, d, v0, v1, v2):
 
-        e1 = v1 - v0
-        e2 = v2 - v0
+
+        e1 = cv.vector_subtract(v1, v0)
+        e2 = cv.vector_subtract(v2, v0)
 
         ### https://qiita.com/ikuzak/items/1332625192daab208e22
         kEpsilon = sys.float_info.epsilon
@@ -31,7 +32,7 @@ class RayTriangleIntersection():
 
         ### Check Parallel
         if (-kEpsilon < det) and (det < kEpsilon):
-            print("Parallel")
+            # print("Parallel")
             return None
         
         det_inv = 1.0 / det
@@ -41,7 +42,7 @@ class RayTriangleIntersection():
         ### Check u-Value in the Domain (0 <= u <= 1)
         u = cv.vector_dot(alpha, r) * det_inv
         if (u < 0.0) or (u > 1.0):
-            print("U")
+            # print("U")
             return None
 
 
@@ -52,7 +53,7 @@ class RayTriangleIntersection():
         ### Check (u + v = 1)
         v = cv.vector_dot(d, beta) * det_inv
         if (v < 0.0) or (u + v > 1.0):
-            print("V")
+            # print("V")
             return None
         
 
@@ -71,9 +72,17 @@ class RayTriangleIntersection():
         new_v2 = cv.vector_multiplicate(v2, v)
         
         intersect_pos = cv.vector_add_3(new_v0, new_v1, new_v2)
+        ray_line = cv.vector_subtract(intersect_pos, o)
 
         ### Check Line-Triangle Intersection
+        ### Compare Length, Line-Length / Origin-IntersectPoint-Length
+        line_length = cv.vector_length(d)
+        intersect_length = cv.vector_length(ray_line)
 
+        if intersect_length > line_length:
+            return None
+        
+        # print("Intersection")
 
         return intersect_pos
         
