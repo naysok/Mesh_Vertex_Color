@@ -36,7 +36,7 @@ class RayTriangleIntersection():
             return None
         
         det_inv = 1.0 / det
-        r = o - v0
+        r = cv.vector_subtract(o, v0)
 
 
         ### Check u-Value in the Domain (0 <= u <= 1)
