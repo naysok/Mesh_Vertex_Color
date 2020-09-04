@@ -2,7 +2,7 @@ import math
 import rhinoscriptsyntax as rs
 
 
-class Operate_Mesh():
+class OperateMesh():
 
 
     def define_mesh_points(self, num):
