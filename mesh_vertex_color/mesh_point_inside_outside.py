@@ -2,7 +2,6 @@ import math
 
 from . import ray_triangle_intersection
 
-reload(ray_triangle_intersection)
 rt = ray_triangle_intersection.RayTriangleIntersection()
 
 

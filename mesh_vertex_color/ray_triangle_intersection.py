@@ -2,7 +2,6 @@ import sys
 
 from . import calc_vector
 
-reload(calc_vector)
 cv = calc_vector.CalcVector()
 
 
