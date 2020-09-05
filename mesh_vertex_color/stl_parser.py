@@ -109,8 +109,48 @@ class StlParser():
 
 
     def stl2meshes(self, file_path):
-        pass
 
+        lines = self.file_open(file_path)
+        # print(len(lines))
+
+        DEFINE_FACE_LINES = 7
+
+        i = 0
+
+        stl_meshes = []
+
+        ### STL Parse
+        while (i * DEFINE_FACE_LINES) < len(lines) - 2:
+
+            idx = (i * DEFINE_FACE_LINES) + 1
+            
+            ### Get String
+            # face_start_nrl_vec = lines[idx]
+            # loop_start = lines[idx + 1]
+            v0 = str(lines[idx + 2])
+            v1 = lines[idx + 3]
+            v2 = lines[idx + 4]
+            # loop_end = lines[idx + 5]
+            # face_end = lines[idx + 6]
+
+            ### Format
+            ### "vertex xx yy zz" >> [xx, yy, zz]
+            v0_list = self.format_stl_vertex_to_list(v0)
+            v1_list = self.format_stl_vertex_to_list(v1)
+            v2_list = self.format_stl_vertex_to_list(v2)
+
+            ### Define Face
+            face_list = []
+
+            face_list.append(v0_list)
+            face_list.append(v1_list)
+            face_list.append(v2_list)
+
+            stl_meshes.append(face_list)
+
+            i += 1
+
+        return stl_meshes
 
 
 
