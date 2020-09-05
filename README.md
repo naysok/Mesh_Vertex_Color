@@ -6,7 +6,6 @@
 
 ### ToDo  
 
-- STL パーサーの実装  
 - PIL を用いて画像に吐き出す  
 - 距離算出  
 - イージング  
@@ -18,12 +17,12 @@
 - mesh_vertex_color // メッシュを数理的に解くライブラリ  
   - calc_vector.py  
     // 計算   
-  - mesh_point_inside_outside.py
-    // ray-triangle を用いた内外判定 
-  - ray_triangle_intersection.py
-    // Möller-Trumbore intersection algorithm で実装した ray-triangle
-  - stl2mesh.py
-    // STL パーサー。とりあえずアスキーだけで。
+  - mesh_point_inside_outside.py  
+    // ray-triangle を用いたメッシュの内外判定  
+  - ray_triangle_intersection.py  
+    // Möller-Trumbore intersection algorithm  
+  - stl_parser.py  
+    // メッシュ面（3頂点）や、ポイントを取り出す  
 
 - rhino_Mesh // gh 上で、格子点からメッシュを書くプログラム  
 
@@ -37,4 +36,10 @@
   [https://en.wikipedia.org/wiki/M%C3%B6ller%E2%80%93Trumbore_intersection_algorithm](https://en.wikipedia.org/wiki/M%C3%B6ller%E2%80%93Trumbore_intersection_algorithm)  
 
 - Pythonの計算機イプシロン（Qiita）  
-  [https://qiita.com/ikuzak/items/1332625192daab208e22](https://qiita.com/ikuzak/items/1332625192daab208e22)
+  [https://qiita.com/ikuzak/items/1332625192daab208e22](https://qiita.com/ikuzak/items/1332625192daab208e22)  
+
+- STLファイルフォーマット  
+  [https://www.hiramine.com/programming/3dmodelfileformat/stlfileformat.html](https://www.hiramine.com/programming/3dmodelfileformat/stlfileformat.html)
+
+- Stanford Bunny（thingiverse）  
+  [https://www.thingiverse.com/thing:3731](https://www.thingiverse.com/thing:3731)  
