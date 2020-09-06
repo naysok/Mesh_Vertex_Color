@@ -1,18 +1,23 @@
 import math
 
 from . import ray_triangle_intersection
-
 rt = ray_triangle_intersection.RayTriangleIntersection()
+
+
+### Build Module via Cython
+# from . import cy_ray_triangle_intersection
+# rt = cy_ray_triangle_intersection.RayTriangleIntersection()
 
 
 class MeshPointInsideOutside():
 
-    """
 
+    """
+    
     mesh = [[v0.X, v0.Y, v0.Z], [v1.X, v1.Y, v1.Z], [v2.X, v2.Y, v2.Z]]
     
-
     """
+
 
     def mesh_intersect(self, mesh, point):
         
@@ -33,8 +38,9 @@ class MeshPointInsideOutside():
     def poly_mesh_intersection(self, poly_mesh, point):
         
         in_out_count = 0
+        mesh_count = len(poly_mesh)
 
-        for i in range(len(poly_mesh)):
+        for i in range(mesh_count):
             
             tmp_mesh = poly_mesh[i]
             in_out_bool = self.mesh_intersect(tmp_mesh, point)
@@ -49,8 +55,9 @@ class MeshPointInsideOutside():
     def mesh_points_segmentation(self, poly_mesh, points):
 
         points_bool = []
-        
-        for i in range(len(points)):
+        points_count = len(points)
+
+        for i in range(points_count):
 
             tmp_pt = points[i]
             inout_count = self.poly_mesh_intersection(poly_mesh, tmp_pt)
