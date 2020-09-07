@@ -1,4 +1,5 @@
 import math
+import time
 
 from . import mesh_point_inside_outside
 from . import image_processing
@@ -19,12 +20,17 @@ class SliceGeometry():
 
     def intersection_test(self, stl_path, point):
 
+        ### Performance Test
+
         ### STL >> [v0, v1, v2]
         meshes = stp.stl2meshes(stl_path)
-        print(len(meshes))
+        # print(len(meshes))
+
+        time_1 = time.time()
 
         test = mio.poly_mesh_intersection(meshes, point)
-        print(test)
+        # print(test)
+        ### Time_12 : 0.02240610122680664Sec
 
 
     def slice_mesh(self, mesh, volume_size, slice_height, down_sampling):
@@ -32,13 +38,15 @@ class SliceGeometry():
         grid_size_ds = int(volume_size / down_sampling)
         
         new_list = []
+        in_out_bool = []
 
         white = tuple([255, 255, 255, 255])
         blank = tuple([0, 0, 0, 255])
 
+        pts = []
         for i in range(grid_size_ds):
 
-            print(i)
+            # print(i)
 
             for j in range(grid_size_ds):
                     
@@ -47,23 +55,20 @@ class SliceGeometry():
                     float(i * down_sampling),
                     float(j * down_sampling),
                     float(slice_height)]
-                # print(pt)
-
-                ### Poly-Mesh Point Segment
+                
+                # pts.append(pt)
                 intersect_count = mio.poly_mesh_intersection(mesh, pt)
-                # print(intersect_count)
 
-                if intersect_count%2 == 1:
-                    new_list.append(white)
-                else:
-                    new_list.append(blank)
-                    
-        new_tuple = tuple(new_list)
+        ### Poly-Mesh Point Segment
+        intersect_count = mio.poly_mesh_intersection_np(mesh, pts)
+        # # print(intersect_count)
+        
+        # new_tuple = tuple(new_list)
 
-        return new_tuple
+        return pts
 
 
-    def define_mask(self, stl_path, img_path, volume_size, layer_height, down_sampling):
+    def define_mask(self, stl_path, img_path, volume_size, layer_height, down_sampling_xy):
 
         ### STL >> [v0, v1, v2]
         meshes = stp.stl2meshes(stl_path)
@@ -72,7 +77,7 @@ class SliceGeometry():
         layer_count = int(volume_size / layer_height)
         print("Layer Count : {}".format(layer_count))
 
-        canvas_size = int(volume_size / down_sampling)
+        canvas_size = int(volume_size / down_sampling_xy)
         canvas = imp.create_canvas(canvas_size)
         data_im = canvas.getdata()
 
@@ -87,9 +92,10 @@ class SliceGeometry():
             print("Processing - Height : {}".format(h_slicing))
 
             mask = self.slice_mesh(meshes, volume_size, h_slicing, down_sampling)
-            
-            canvas.putdata(mask)
-            imp.export_image(canvas, img_path)
+            # print(mask)
+
+            # canvas.putdata(mask)
+            # imp.export_image(canvas, img_path)
 
         return 
 
