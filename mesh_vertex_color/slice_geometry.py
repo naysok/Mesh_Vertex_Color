@@ -1,12 +1,14 @@
 import math
 import time
 
-from . import mesh_point_inside_outside
-from . import image_processing
-from . import stl_parser
 
+from . import mesh_point_inside_outside
 mio = mesh_point_inside_outside.MeshPointInsideOutside()
+
+from . import image_processing
 imp = image_processing.ImageProcessing()
+
+from . import stl_parser
 stp = stl_parser.StlParser()
 
 
@@ -22,15 +24,25 @@ class SliceGeometry():
 
         ### Performance Test
 
+        # time_0 = time.time()
+
         ### STL >> [v0, v1, v2]
         meshes = stp.stl2meshes(stl_path)
         # print(len(meshes))
 
-        time_1 = time.time()
+        # time_1 = time.time()
 
         test = mio.poly_mesh_intersection(meshes, point)
         # print(test)
         ### Time_12 : 0.02240610122680664Sec
+
+        # time_2 = time.time()
+
+        # time_01 = time1 - time0
+        # time_12 = time2 - time1
+
+        # print("Time_01 : {}Sec".format(time_01))
+        # print("Time_12 : {}Sec".format(time_12))
 
 
     def slice_mesh(self, mesh, volume_size, slice_height, down_sampling):
