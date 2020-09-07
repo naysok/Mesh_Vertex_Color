@@ -1,4 +1,6 @@
 import math
+import time
+
 
 from . import ray_triangle_intersection
 rt = ray_triangle_intersection.RayTriangleIntersection()
@@ -17,6 +19,35 @@ class MeshPointInsideOutside():
     mesh = [[v0.X, v0.Y, v0.Z], [v1.X, v1.Y, v1.Z], [v2.X, v2.Y, v2.Z]]
     
     """
+
+
+    def mesh_intersect_np(self, mesh, point):
+        
+        ### Optimization with Numpy
+
+        ### ray_triangle_intersection
+        ### rt.calc_intersection(o, d, v0, v1, v2)
+        
+        o = [0, 0, 0]
+        d = point
+        v0 = mesh[0]
+        v1 = mesh[1]
+        v2 = mesh[2]
+
+        # bool_intersect = rt.calc_intersection(o, d, v0, v1, v2)
+        
+        return bool_intersect
+
+
+    def poly_mesh_intersection_np(self, poly_mesh, points):
+        
+        ### Optimization with Numpy
+        
+        # if intersect_count%2 == 1:
+        #     new_list.append(white)
+        # else:
+        #     new_list.append(blank)
+        pass
 
 
     def mesh_intersect(self, mesh, point):
@@ -48,7 +79,6 @@ class MeshPointInsideOutside():
             if in_out_bool != None:
                 in_out_count += 1
             
-        # print(in_out_count)
         return in_out_count
 
 
