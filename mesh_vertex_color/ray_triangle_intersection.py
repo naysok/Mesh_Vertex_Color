@@ -62,11 +62,11 @@ class RayTriangleIntersection():
 
         ### Barycenrinc_Coordinate >> XYZ
         ### ((1 - u - v) * v0) + (u * v1) + (v * v2)
-        new_v0 = v0 * (1.0 - u - v))
+        new_v0 = v0 * (1.0 - u - v)
         new_v1 = v1 * u
         new_v2 = v2 * v
         
-        intersect_pos = np.add(np.add(new_v0, new_v1), new_v2))
+        intersect_pos = np.add(np.add(new_v0, new_v1), new_v2)
         ray_line = np.subtract(intersect_pos, o)
 
         ### Check Line-Triangle Intersection
