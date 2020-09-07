@@ -6,10 +6,9 @@
 
 ### ToDo  
 
-- PIL を用いて画像に吐き出す  
-- 距離算出  
-- イージング  
-- パフォーマンステスト  
+- [] パフォーマンス向上 // Numpy で行列計算、Cupy で GPU 演算。  
+- [] 距離算出  
+- [] イージング  
 
 
 ### Index  
@@ -25,6 +24,12 @@
     // メッシュ面（3頂点）や、ポイントを取り出す  
 
 - rhino_Mesh // gh 上で、格子点からメッシュを書くプログラム  
+
+
+### Related Projects  
+
+- Contour_Draw_3D  
+  [https://github.com/naysok/Contour_Draw_3D](https://github.com/naysok/Contour_Draw_3D)  
 
 
 ### Ref  
@@ -43,3 +48,6 @@
 
 - Stanford Bunny（thingiverse）  
   [https://www.thingiverse.com/thing:3731](https://www.thingiverse.com/thing:3731)  
+
+- Guide to Voxel Printing（GrabCAD）  
+  [https://help.grabcad.com/article/230-guide-to-voxel-printing?locale=en&fbclid=IwAR3PvdP71KfqY1herjNa87oGvXnszbsXIcaNfOUYNfbDLn_kIZydNeyYXes](https://help.grabcad.com/article/230-guide-to-voxel-printing?locale=en&fbclid=IwAR3PvdP71KfqY1herjNa87oGvXnszbsXIcaNfOUYNfbDLn_kIZydNeyYXes)  
