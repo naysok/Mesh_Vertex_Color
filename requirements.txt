@@ -1,0 +1,6 @@
+cupy-cuda110==7.8.0
+fastrlock==0.5
+llvmlite==0.34.0
+numpy==1.19.1
+Pillow==7.2.0
+six==1.15.0
