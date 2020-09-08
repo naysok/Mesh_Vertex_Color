@@ -11,9 +11,12 @@ from mesh_vertex_color import slice_geometry
 sg = slice_geometry.SliceGeometry()
 
 
+prj_name = "test"
+
 dir_path = "C:\\Users\\ysoky\\Documents\\Mesh_Vertex_Color\\"
+prj_path = dir_path + "_images_\\" + prj_path
+
 stl_path = dir_path + "_stl_\\bunny-flatfoot_fixed_light.stl"
-prj_path = dir_path + "_images_\\test\\"
 
 
 ### Size (mm)
