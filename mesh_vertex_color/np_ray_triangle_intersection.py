@@ -2,10 +2,6 @@ import sys
 import numpy as np
 
 
-from . import calc_vector
-cv = calc_vector.CalcVector()
-
-
 #############################################################
 ###                                                       ###
 ###   Module for Python3                                  ###
@@ -36,19 +32,19 @@ class RayTriangleIntersection():
         # print(alpha)
         # print(det)
 
+        ### True = InterSection
+
         ### Check Parallel
-        if (-kEpsilon < det) and (det < kEpsilon):
-            # print("Parallel")
-            return None
+        bool_p = (-kEpsilon > det) or (det > kEpsilon):
+        # print("Parallel")
         
         det_inv = 1.0 / det
         r = np.subtract(o, v0)
 
         ### Check u-Value in the Domain (0 <= u <= 1)
         u = np.dot(alpha, r) * det_inv
-        if (u < 0.0) or (u > 1.0):
-            # print("U")
-            return None
+        bool_u = (0.0 < u) and (u < 1.0):
+        # print("U")
 
         beta = np.cross(r, e1)
 
@@ -56,14 +52,12 @@ class RayTriangleIntersection():
         ### and
         ### Check (u + v = 1)
         v = numpy.dot(d, beta) * det_inv
-        if (v < 0.0) or (u + v > 1.0):
-            # print("V")
-            return None
+        bool_v = (0.0 < v) and (u + v < 1.0):
+        # print("V")
         
         ### Check t_value (t >= 0)
         t = numpy.dot(e2, beta) * det_inv
-        if t < 0.0:
-            return None
+        bool_t = 0.0 < t:
 
         ### Intersett : True !!
         # intersect_val = [t, u, v]
@@ -82,9 +76,12 @@ class RayTriangleIntersection():
         line_length = np.linalg.norm(d)
         intersect_length = np.linalg.norm(ray_line)
 
-        if intersect_length > line_length:
-            return None
+        bool_l = intersect_length < line_length:
+
+        ### Merge Bool
+        bool_merged = bool_p & bool_u & bool_v & bool_t & bool_l
+        intersect_count = np.nonzero(bool_merged)
         
         # print("Intersection")
 
-        return intersect_pos
+        return intersect_count
