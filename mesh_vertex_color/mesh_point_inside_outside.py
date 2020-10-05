@@ -3,7 +3,6 @@ import time
 
 
 ### IronPython 2
-### Not Using Numpy
 from mesh_vertex_color import ray_triangle_intersection
 rt = ray_triangle_intersection.RayTriangleIntersection()
 

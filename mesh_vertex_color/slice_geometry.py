@@ -1,7 +1,7 @@
 import math
 import time
 
-
+### IronPython 2
 from . import mesh_point_inside_outside
 mio = mesh_point_inside_outside.MeshPointInsideOutside()
 
