@@ -1,10 +1,9 @@
 import math
 import time
 
-import numpy as np
-
 
 ### IronPython 2
+
 from mesh_vertex_color import ray_triangle_intersection
 rt = ray_triangle_intersection.RayTriangleIntersection()
 
@@ -58,8 +57,6 @@ img_path = prj_path + "test_0.png"
 
 
 time_0 = time.time()
-
-
 
 time_1 = time.time()
 
