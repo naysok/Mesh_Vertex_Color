@@ -70,10 +70,7 @@ class SliceGeometry():
                 
                 # pts.append(pt)
                 intersect_count = mio.poly_mesh_intersection(mesh, pt)
-
-        ### Poly-Mesh Point Segment
-        intersect_count = mio.poly_mesh_intersection_np(mesh, pts)
-        # # print(intersect_count)
+                # print(intersect_count)
         
         # new_tuple = tuple(new_list)
 
