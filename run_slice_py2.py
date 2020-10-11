@@ -4,19 +4,24 @@ import time
 import numpy as np
 
 
+### IronPython 2
 from mesh_vertex_color import ray_triangle_intersection
 rt = ray_triangle_intersection.RayTriangleIntersection()
-
-from mesh_vertex_color import slice_geometry
-sg = slice_geometry.SliceGeometry()
 
 
 prj_name = "test"
 
-dir_path = "C:\\Users\\ysoky\\Documents\\Mesh_Vertex_Color\\"
-prj_path = dir_path + "_images_\\" + prj_path
 
-stl_path = dir_path + "_stl_\\bunny-flatfoot_fixed_light.stl"
+### WINDOWS 10
+# dir_path = "C:\\Users\\ysoky\\Documents\\Mesh_Vertex_Color\\"
+# prj_path = dir_path + "_images_\\" + prj_name
+# stl_path = dir_path + "_stl_\\bunny-flatfoot_fixed_light.stl"
+
+
+### MBP
+dir_path = "/Users/yoshionao_mbp/Documents/Mesh_Vertex_Color/"
+prj_path = dir_path + "_images_/" + prj_name
+stl_path = dir_path + "_stl_/bunny-flatfoot_fixed_light.stl"
 
 
 ### Size (mm)
@@ -53,6 +58,8 @@ img_path = prj_path + "test_0.png"
 
 
 time_0 = time.time()
+
+
 
 time_1 = time.time()
 
