@@ -4,8 +4,16 @@ import time
 
 ### IronPython 2
 
-from mesh_vertex_color import ray_triangle_intersection
+from mesh_vertex_color import ray_triangle_intersection, slice_geometry
+
+reload(ray_triangle_intersection)
+reload(slice_geometry)
+
 rt = ray_triangle_intersection.RayTriangleIntersection()
+sg = slice_geometry.SliceGeometry()
+
+
+####################
 
 
 prj_name = "test"
@@ -38,25 +46,20 @@ DOWN_SAMPLING_XY = 2
 DOWN_SAMPLING_Z = 2
 
 
-
 img_path = prj_path + "test_0.png"
 
 
-# time_0 = time.time()
+time_0 = time.time()
 
 
 
 # sg.define_mask(stl_path, img_path, VOLUME_SIZE, LAYER_HEIGHT, DOWN_SAMPLING)
 
 
-# point_test = [400, 400, 200]
-# sg.intersection_test(stl_path, point_test)
+point_test = [400, 400, 200]
+sg.intersection_test(stl_path, point_test)
 ### 0.06806588172912598Sec
 
-
-
-
-time_0 = time.time()
 
 time_1 = time.time()
 
