@@ -4,12 +4,8 @@ import time
 
 ### IronPython 2
 from mesh_vertex_color import irp_ray_triangle_intersection
+reload(irp_ray_triangle_intersection)
 rt = irp_ray_triangle_intersection.RayTriangleIntersection()
-
-
-### Build Module via Cython
-# from . import cy_ray_triangle_intersection
-# rt = cy_ray_triangle_intersection.RayTriangleIntersection()
 
 
 class MeshPointInsideOutside():
@@ -43,6 +39,7 @@ class MeshPointInsideOutside():
         in_out_count = 0
         mesh_count = len(poly_mesh)
 
+        ### Poly-Mesh >>> Mesh
         for i in range(mesh_count):
             
             tmp_mesh = poly_mesh[i]
@@ -52,21 +49,3 @@ class MeshPointInsideOutside():
                 in_out_count += 1
             
         return in_out_count
-
-
-    def mesh_points_segmentation(self, poly_mesh, points):
-
-        points_bool = []
-        points_count = len(points)
-
-        for i in range(points_count):
-
-            tmp_pt = points[i]
-            inout_count = self.poly_mesh_intersection(poly_mesh, tmp_pt)
-
-            if inout_count%2 == 1:
-                points_bool.append(True)
-            else:
-                points_bool.append(False)
-        
-        return points_bool
