@@ -2,6 +2,7 @@ import sys
 
 
 from . import irp_calc_vector
+reload(irp_calc_vector)
 cv = irp_calc_vector.CalcVector()
 
 
