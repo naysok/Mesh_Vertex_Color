@@ -24,7 +24,7 @@
   - irp_calc_vector.py  
     // 計算 （for IronPython）  
 
-  -irp_mesh_point_inside_outside.py  
+  - irp_mesh_point_inside_outside.py  
     // ray-triangle を用いたメッシュの内外判定 （for IronPython）  
   
   - irp_ay_triangle_intersection.py  
