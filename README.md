@@ -8,20 +8,40 @@
 
 ### ToDo  
 
-- [ ] パフォーマンス向上 // Numpy で行列計算、Cupy で GPU 演算。  
-- [ ] 距離算出  
+- [ ] マスク等パフォーマンス向上 // Numpy で行列計算（ + Cupy で GPU 演算）  
+- [ ] メッシュ頂点からの距離算出  
+- [ ] 入力点群からの距離算出  
 - [ ] イージング  
 
 
 ### Index  
 
-- mesh_vertex_color // メッシュを数理的に解くライブラリ  
-  - calc_vector.py  
-    // 計算   
-  - mesh_point_inside_outside.py  
+- mesh_vertex_color // メッシュを数理的に解くライブラリ（IronPython2 / CPython3）  
+  
+  - image_processing.py  
+    // がそう処理
+
+  - irp_calc_vector.py  
+    // 計算 （for IronPython）  
+
+  -irp_mesh_point_inside_outside.py  
+    // ray-triangle を用いたメッシュの内外判定 （for IronPython）  
+  
+  - irp_ay_triangle_intersection.py  
+    // Möller-Trumbore Intersection Algorithm （for IronPython） 
+
+  - irp_slice_geometry.py  
+    // ジオメトリ処理全般 （for IronPython）  
+  
+  - np_mesh_point_inside_outside.py  
     // ray-triangle を用いたメッシュの内外判定  
-  - ray_triangle_intersection.py  
-    // Möller-Trumbore intersection algorithm  
+  
+  - np_ray_triangle_intersection.py  
+    // Möller-Trumbore Intersection Algorithm  
+  
+  - np_slice_geometry.py  
+    // ジオメトリ処理全般  
+  
   - stl_parser.py  
     // メッシュ面（3頂点）や、ポイントを取り出す  
 
