@@ -19,7 +19,7 @@
 - mesh_vertex_color // メッシュを数理的に解くライブラリ（IronPython2 / CPython3）  
   
   - image_processing.py  
-    // がそう処理
+    // 画像処理全般  
 
   - irp_calc_vector.py  
     // 計算 （for IronPython）  
