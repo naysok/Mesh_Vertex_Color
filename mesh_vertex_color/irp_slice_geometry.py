@@ -2,19 +2,11 @@ import math
 import time
 
 ### IronPython 2
-from . import mesh_point_inside_outside
-mio = mesh_point_inside_outside.MeshPointInsideOutside()
-
-from . import image_processing
-imp = image_processing.ImageProcessing()
+from . import irp_mesh_point_inside_outside
+mio = irp_mesh_point_inside_outside.MeshPointInsideOutside()
 
 from . import stl_parser
 stp = stl_parser.StlParser()
-
-
-### Build Module via Cython
-# from . import cy_mesh_point_inside_outside
-# mio = cy_mesh_point_inside_outside.MeshPointInsideOutside()
 
 
 class SliceGeometry():
@@ -32,8 +24,15 @@ class SliceGeometry():
 
         # time_1 = time.time()
 
-        test = mio.poly_mesh_intersection(meshes, point)
-        # print(test)
+        intersect_count = mio.poly_mesh_intersection(meshes, point)
+        print("Intersect Count : {}".format(intersect_count))
+
+
+        if intersect_count%2 == 0:
+            print("Outside!!")
+        else:
+            print("Inside!!")
+
         ### Time_12 : 0.02240610122680664Sec
 
         # time_2 = time.time()
@@ -78,38 +77,8 @@ class SliceGeometry():
 
 
     def define_mask(self, stl_path, img_path, volume_size, layer_height, down_sampling_xy):
-
-        ### STL >> [v0, v1, v2]
-        meshes = stp.stl2meshes(stl_path)
-        print("Mesh Count : {}".format(len(meshes)))
-
-        layer_count = int(volume_size / layer_height)
-        print("Layer Count : {}".format(layer_count))
-
-        canvas_size = int(volume_size / down_sampling_xy)
-        canvas = imp.create_canvas(canvas_size)
-        data_im = canvas.getdata()
-
-
-        # for i in range(layer_count):
-        for i in range(14815, 14816):
-
-            h_slicing = float(i * layer_height)
-            h_slicing = 400.0
-
-            print("Processing - Layer : {}".format(i))
-            print("Processing - Height : {}".format(h_slicing))
-
-            mask = self.slice_mesh(meshes, volume_size, h_slicing, down_sampling)
-            # print(mask)
-
-            # canvas.putdata(mask)
-            # imp.export_image(canvas, img_path)
-
-        return 
+        pass
 
 
     def render():
         pass
-
-

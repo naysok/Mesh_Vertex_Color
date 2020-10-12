@@ -1,8 +1,8 @@
 import sys
 
 
-from . import calc_vector
-cv = calc_vector.CalcVector()
+from . import irp_calc_vector
+cv = irp_calc_vector.CalcVector()
 
 
 #############################################################

@@ -4,13 +4,9 @@ import time
 
 ### IronPython 2
 
-from mesh_vertex_color import ray_triangle_intersection, slice_geometry
-
-reload(ray_triangle_intersection)
-reload(slice_geometry)
-
-rt = ray_triangle_intersection.RayTriangleIntersection()
-sg = slice_geometry.SliceGeometry()
+from mesh_vertex_color import irp_slice_geometry
+reload(irp_slice_geometry)
+sg = irp_slice_geometry.SliceGeometry()
 
 
 ####################
@@ -41,30 +37,33 @@ _INCH = 25.4
 GRID_SIZE = _INCH / 300.0
 # print(GRID_SIZE)
 
-### Down Sampling
-DOWN_SAMPLING_XY = 2
-DOWN_SAMPLING_Z = 2
 
-
-img_path = prj_path + "test_0.png"
+####################
 
 
 time_0 = time.time()
 
 
+point_test = [300, 300, 300]
 
-# sg.define_mask(stl_path, img_path, VOLUME_SIZE, LAYER_HEIGHT, DOWN_SAMPLING)
+### Re-Size Point
+pt = [
+    float(point_test[0] * GRID_SIZE),
+    float(point_test[1] * GRID_SIZE),
+    float(point_test[2] * GRID_SIZE)]
+
+print("Point : {}, {}, {}".format(pt[0], pt[1], pt[2]))
 
 
-point_test = [400, 400, 200]
-sg.intersection_test(stl_path, point_test)
+### Calc Inside-Outside Point
+### Ray-Triangle Intersection with Brute-Force Search
+sg.intersection_test(stl_path, pt)
+
+### Core i7
 ### 0.06806588172912598Sec
 
 
 time_1 = time.time()
 
-time_2 = time.time()
 
-
-print("Time_01 : {}Sec".format(time_1 - time_0))
-print("Time_12 : {}Sec".format(time_2 - time_1))
+print("Calc Inside-Outside Time : {} Sec".format(time_1 - time_0))

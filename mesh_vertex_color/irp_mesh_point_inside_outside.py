@@ -3,8 +3,8 @@ import time
 
 
 ### IronPython 2
-from mesh_vertex_color import ray_triangle_intersection
-rt = ray_triangle_intersection.RayTriangleIntersection()
+from mesh_vertex_color import irp_ray_triangle_intersection
+rt = irp_ray_triangle_intersection.RayTriangleIntersection()
 
 
 ### Build Module via Cython
