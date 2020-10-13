@@ -13,6 +13,6 @@ class Util():
         return ((src - old_min) / (old_max - old_min) * (new_max - new_min) + new_min)
 
 
-    def zip_matrix(self, mat):
+    def transpose_matrix(self, mat):
         ### https://note.nkmk.me/python-list-transpose/
         return [list(x) for x in zip(*mat)]
