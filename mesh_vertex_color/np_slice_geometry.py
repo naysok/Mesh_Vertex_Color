@@ -3,20 +3,13 @@ import time
 
 
 ### Python3
-### Using Numpy
+
 from . import np_mesh_point_inside_outside
 mio = np_mesh_point_inside_outside.MeshPointInsideOutside()
 
-from . import image_processing
+from . import image_processing, stl_parser
 imp = image_processing.ImageProcessing()
-
-from . import stl_parser
 stp = stl_parser.StlParser()
-
-
-### Build Module via Cython
-# from . import cy_mesh_point_inside_outside
-# mio = cy_mesh_point_inside_outside.MeshPointInsideOutside()
 
 
 class SliceGeometry():
@@ -26,25 +19,30 @@ class SliceGeometry():
 
         ### Performance Test
 
-        # time_0 = time.time()
+        time_0 = time.time()
 
         ### STL >> [v0, v1, v2]
         meshes = stp.stl2meshes(stl_path)
         # print(len(meshes))
 
-        # time_1 = time.time()
+        time_1 = time.time()
 
-        test = mio.poly_mesh_intersection(meshes, point)
-        # print(test)
-        ### Time_12 : 0.02240610122680664Sec
+        intersect_count = mio.poly_mesh_intersection(meshes, point)
+        print("[Test] Intersect Count : {}".format(intersect_count))
 
-        # time_2 = time.time()
+        if intersect_count%2 == 0:
+            print("[Test] Outside!!")
+        else:
+            print("[Test] Inside!!")
+        
+        time_2 = time.time()
 
-        # time_01 = time1 - time0
-        # time_12 = time2 - time1
-
-        # print("Time_01 : {}Sec".format(time_01))
-        # print("Time_12 : {}Sec".format(time_12))
+        print("Open and Load STL : {} Sec".format(time_1 - time_0))
+        print("Calc Point Inside/OutSide : {} Sec".format(time_2 - time_1))
+        
+        ### Core i5 (MacBook Pro 2014)
+        ### Open and Load STL : 0.05614614486694336 Sec
+        ### Calc Point Inside/OutSide : 0.019470930099487305 Sec
 
 
     def slice_mesh(self, mesh, volume_size, slice_height, down_sampling):
