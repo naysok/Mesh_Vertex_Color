@@ -74,3 +74,6 @@
 
 - Guide to Voxel Printing（GrabCAD）  
   [https://help.grabcad.com/article/230-guide-to-voxel-printing?locale=en&fbclid=IwAR3PvdP71KfqY1herjNa87oGvXnszbsXIcaNfOUYNfbDLn_kIZydNeyYXes](https://help.grabcad.com/article/230-guide-to-voxel-printing?locale=en&fbclid=IwAR3PvdP71KfqY1herjNa87oGvXnszbsXIcaNfOUYNfbDLn_kIZydNeyYXes)  
+
+  - Vectorized way of calculating row-wise dot product two matrices with Scipy（Stackoverrun）  
+  [https://stackoverrun.com/ja/q/4238423](https://stackoverrun.com/ja/q/4238423)  
