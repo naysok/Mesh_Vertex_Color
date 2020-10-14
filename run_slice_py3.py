@@ -6,14 +6,8 @@ import numpy as np
 
 ### Python3
 
-from mesh_vertex_color import ray_triangle_intersection_np
-rt = ray_triangle_intersection_np.RayTriangleIntersection()
-
-from mesh_vertex_color import stl_parser
-sp = stl_parser.StlParser()
-
-from mesh_vertex_color import slice_geometry
-sg = slice_geometry.SliceGeometry()
+from mesh_vertex_color import np_slice_geometry
+sg = np_slice_geometry.SliceGeometry()
 
 
 prj_name = "test"
@@ -46,32 +40,42 @@ DOWN_SAMPLING_XY = 2
 DOWN_SAMPLING_Z = 2
 
 
-
 img_path = prj_path + "test_0.png"
 
 
-# time_0 = time.time()
+##########
+
+
+time_0 = time.time()
+
+
+############################## Test ##############################
+
+### Inside/Outside
+
+point_test = [300, 300, 300]
+
+### Re-Size Point
+pt = [
+    float(point_test[0] * GRID_SIZE),
+    float(point_test[1] * GRID_SIZE),
+    float(point_test[2] * GRID_SIZE)]
+
+print("Point : {}, {}, {}".format(pt[0], pt[1], pt[2]))
+
+sg.intersection_test(stl_path, pt)
+### 0.06806588172912598Sec
+
+############################## Test ##############################
 
 
 
 # sg.define_mask(stl_path, img_path, VOLUME_SIZE, LAYER_HEIGHT, DOWN_SAMPLING)
 
 
-# point_test = [400, 400, 200]
-# sg.intersection_test(stl_path, point_test)
-### 0.06806588172912598Sec
-
-
-
-
-time_0 = time.time()
 
 
 
 time_1 = time.time()
 
-time_2 = time.time()
-
-
 print("Time_01 : {}Sec".format(time_1 - time_0))
-print("Time_12 : {}Sec".format(time_2 - time_1))
